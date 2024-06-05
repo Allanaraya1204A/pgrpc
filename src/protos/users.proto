@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package users;
+
+service UsersService {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse) {}
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {}
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message CreateUserResponse {
+  int32 id = 1;
+  string username = 2;
+  string email = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+}
+
+message GetUsersRequest {}
+
+message User {
+  int32 id = 1;
+  string username = 2;
+  string email = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+}
+
+message GetUsersResponse {
+  repeated User users = 1;
+}
+
+message GetUserRequest {
+  int32 id = 1;
+}
+
+message GetUserResponse {
+  int32 id = 1;
+  string username = 2;
+  string email = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+  string message = 6; // Mensaje de error si no se encuentra el usuario
+}
+
+message UpdateUserRequest {
+  int32 id = 1;
+  string username = 2;
+  string email = 3;
+  string password = 4;
+}
+
+message UpdateUserResponse {
+  int32 id = 1;
+  string username = 2;
+  string email = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+}
+
+message DeleteUserRequest {
+  int32 id = 1;
+}
+
+message DeleteUserResponse {
+  int32 id = 1;
+}
